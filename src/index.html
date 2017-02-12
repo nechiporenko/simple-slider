@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Simple Slider</title>
+    @@include('templates/head.html')
+</head>
+<body class="page">
+    <!--HEADER-->
+    @@include('templates/header.html')
+    <!--/HEADER-->
+	<!--MAIN CONTENT-->
+    <main>
+        <div style="max-width:1000px; margin:0 auto">
+            <div class="b-slider">
+                <ul class="b-slider__list" id="slider">
+                    <li class="b-slider__item">
+                        <img src="http://placehold.it/1000x300" alt="" />
+                    </li>
+                    <li class="b-slider__item">
+                        <img src="http://placehold.it/1000x300/22cc55" alt="" />
+                    </li>
+                    <li class="b-slider__item">
+                        <img src="http://placehold.it/1000x300/ff0066" alt="" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+	<!--/MAIN CONTENT-->
+
+    <!--FOOTER-->
+    @@include('templates/footer.html')
+</body>
+</html>

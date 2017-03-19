@@ -8,7 +8,8 @@
 (function () {
     'use strict';
 
-    var slider = document.getElementById('slider');
+    var slider = document.getElementById('slider'), //id списка слайдера
+        pager_css = 'css/pager.min.css'; //путь к файлу стилей пейджера
     if (slider) initSlider(); //можно передать значение интервала в качестве параметра, например, initSlider(2000) - для запуска слайдера с интервалом в 2с.
 
 
@@ -38,9 +39,9 @@
         };
 
         method.addPagerStyles = function(){
-            var css = document.createElement("link");
-            css.setAttribute("rel", "stylesheet");
-            css.setAttribute("href", "css/pager.min.css");
+            var css = document.createElement('link');
+            css.setAttribute('rel', 'stylesheet');
+            css.setAttribute('href', pager_css);
             document.getElementsByTagName("head")[0].appendChild(css);
         };
 
@@ -112,7 +113,7 @@
     }
 
 
-    //helpers. Ф-ции добавить/удалить класс с fallback для ie9
+    //helpers. Ф-ции добавить/удалить класс плюс fallback для ie9
     function addClass(el, className) {
         if (el.classList)
             el.classList.add(className);

@@ -52,18 +52,30 @@ module.exports = function(grunt) {
 		            outputStyle: 'expanded',
 		            sourceMap: true
 		        },
-		        files: {
-					'dist/css/app.min.css' : 'src/styles/sass/app.scss'
-		        }
+		        files:[
+					{
+						expand: true,
+						cwd: 'src/styles/sass',
+						src: ['*.scss'],
+						dest: 'dist/css',
+						ext: '.min.css'
+					}
+				]
     		},
     		prod:{
     			options: {
 		            outputStyle: 'compact',
 		            sourceMap: false
 		        },
-		        files: {
-					'src/styles/css/app-unprefixed.css' : 'src/styles/sass/app.scss'
-		        }
+		        files: [
+					{
+						expand: true,
+						cwd: 'src/styles/sass',
+						src: ['*.scss'],
+						dest: 'src/styles/css',
+						ext: '.css'
+					}
+		        ]
     		}
     	},
     	autoprefixer:{
@@ -72,9 +84,9 @@ module.exports = function(grunt) {
 				  'last 2 version',
 				  'ie 9'
 				]
-			},
+			},		
 			dist: {
-				src: 'src/styles/css/app-unprefixed.css',
+				src: 'src/styles/css/app.css',
 				dest:'src/styles/css/app.css'
 			},
     	},
@@ -84,17 +96,20 @@ module.exports = function(grunt) {
 				roundingPrecision: -1
 			},
 			target: {
-				files: {
-					'dist/css/app.min.css' : 'src/styles/css/app.css'
-				}
+				files: [
+					{
+						expand: true,
+						cwd: 'src/styles/css',
+						src: ['*.css'],
+						dest: 'dist/css',
+						ext: '.min.css'
+					}
+				]
 			}
     	},
     	jshint:{
 			options: {
-		        reporter: require('jshint-stylish'),
-		        globals: {
-		        	//jQuery: true
-		      	}
+		        reporter: require('jshint-stylish')
 		    },
 		    all: [
 		        'src/scripts/*.js'
@@ -119,10 +134,7 @@ module.exports = function(grunt) {
     		},
     		prod:{
     			options:{
-    				sourceMap: false,
-    				mangle:{
-    					//except: ['jQuery']
-    				}
+    				sourceMap: false
     			},
     			files:[
     				{
@@ -171,23 +183,17 @@ module.exports = function(grunt) {
 						flatten: true,
 						src: 'src/styles/css/app.css',
 						dest: 'dist/css'
+    				},
+    				{
+    					expand: true,
+						flatten: true,
+						src: 'src/styles/css/pager.css',
+						dest: 'dist/css'
     				}
     			]
     		},
     		init:{
     		    files: [
-                    {
-                        //expand: false,
-                        //flatten: false,
-                        //src: 'bower_components/normalize-css/normalize.css',
-                        //dest: 'src/styles/sass/_normalize.scss'
-                    },
-    				{
-    					//expand: true,
-						//flatten: true,
-						//src: 'bower_components/jquery/dist/jquery.min.js',
-						//dest: 'dist/js/vendor'
-    				},
     				{
 						expand: true,
 						flatten: true,

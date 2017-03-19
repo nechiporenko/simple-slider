@@ -1,7 +1,7 @@
 /*!
- * my-project
- * @author: nechiporenko
- * @version: 0.0.1
+ * simple-js-slider
+ * @author: avakandy
+ * @version: 1.0.3
  * Copyright 2017.
  */
 
@@ -30,13 +30,21 @@
                 item.className = 'b-pager__item';
                 item.setAttribute('data-item', i);
                 pager.appendChild(item);
-                method.pagerClick(item);//добавим обработку клика по кнопке (вынесем за пределы цикла)
+                method.clickOnPager(item);//добавим обработку клика по кнопке (вынесем за пределы цикла)
             }
-            slider.appendChild(pager);
+            method.addPagerStyles();//добавили в head стили пейджера
+            slider.appendChild(pager);//добавили кнопки пейджера в слайдер
             buttons = slider.getElementsByClassName('b-pager__item'); //после того как пейджер создан, запишем его элементы в массив
         };
 
-        method.pagerClick = function(el){//обработка клика по кнопке пейджера
+        method.addPagerStyles = function(){
+            var css = document.createElement("link");
+            css.setAttribute("rel", "stylesheet");
+            css.setAttribute("href", "css/pager.min.css");
+            document.getElementsByTagName("head")[0].appendChild(css);
+        };
+
+        method.clickOnPager = function(el){//обработка клика по кнопке пейджера
             el.addEventListener('click', function(){
                 var data = el.getAttribute('data-item');
                 if (data === handle.current) {

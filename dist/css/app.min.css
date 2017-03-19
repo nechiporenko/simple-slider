@@ -1,8 +1,8 @@
 /*!
- * my-project
- * @author: nechiporenko
- * @version: 0.0.1
+ * simple-js-slider
+ * @author: avakandy
+ * @version: 1.0.3
  * Copyright 2017.
  */
 
-.b-slider{height:300px;position:relative}.b-slider img{width:100%;height:auto;border:0}.b-slider__list{list-style-type:none;padding:0;margin:0}.b-slider__item{position:absolute;top:0;left:0;right:0;bottom:0;opacity:0;z-index:1;will-change:opacity;transition:opacity 1s}.b-slider__item.current{opacity:1;z-index:2}.b-pager{position:absolute;bottom:20px;left:0;width:100%;text-align:center}.b-pager__item{display:inline-block;vertical-align:middle;margin:0 5px;width:10px;height:10px;border-radius:50%;background-color:#fff;cursor:pointer;position:relative;z-index:3;transition:background-color .2s}.b-pager__item:hover{background-color:#555}.b-pager__item.current{background-color:#555;cursor:default}
+.b-slider{height:300px;position:relative}.b-slider img{width:100%;height:auto;border:0}.b-slider__list{list-style-type:none;padding:0;margin:0}.b-slider__item{position:absolute;top:0;left:0;right:0;bottom:0;opacity:0;z-index:1;will-change:opacity;transition:opacity 1s}.b-slider__item.current{opacity:1;z-index:2}

@@ -22,18 +22,22 @@
                 var item = document.createElement('span');
                 item.className = 'b-pager__item';
                 item.setAttribute('data-item', i);
-                item.addEventListener('click', function () {//обработка клика по кнопке пейджера
-                    var data = this.getAttribute('data-item');
-                    if (data === handle.current) {
-                        return false;
-                    } else {
-                        method.goToSlide(data); //переходим на нужный слайд
-                    }
-                });
                 pager.appendChild(item);
-            };
+                method.pagerClick(item);//добавим обработку клика по кнопке (вынесем за пределы цикла)
+            }
             slider.appendChild(pager);
-            buttons = slider.getElementsByClassName('b-pager__item');
+            buttons = slider.getElementsByClassName('b-pager__item'); //после того как пейджер создан, запишем его элементы в массив
+        };
+
+        method.pagerClick = function(el){//обработка клика по кнопке пейджера
+            el.addEventListener('click', function(){
+                var data = el.getAttribute('data-item');
+                if (data === handle.current) {
+                    return false;
+                } else {
+                    method.goToSlide(data); //переходим на нужный слайд
+                }
+            });
         };
 
         method.startSlider = function () {//запуск (перпезапуск)
@@ -80,7 +84,7 @@
             if (!isNaN(time)) {//проверим переданное значение интервала смены слайдов (если есть, если нет - оставим дефолтное)
                 handle.delay = Math.round(time);
                 if (handle.delay < 1000) handle.delay = 1000;
-            };
+            }
 
             //если на странице более чем 1 слайд - запустим
             if (slides.length > 1) {
@@ -90,7 +94,7 @@
                 addClass(slides[0], 'current');
             }
         })();
-    };
+    }
 
 
     //helpers. Ф-ции добавить/удалить класс с fallback для ie9
